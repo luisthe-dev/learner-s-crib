@@ -354,6 +354,62 @@ header .header-short-info .download_app_images img {
     margin: 10px 12px;
 }
 
+.main_container .main_container_contact .main_container_contact_info p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #794b0c;
+}
+
+.main_container .main_container_contact .main_container_contact_info form {
+    width: 80%;
+    margin: 5px auto;
+    padding: 10px;
+}
+
+.main_container .main_container_contact .main_container_contact_info form .form_block {
+    display: block;
+    width: 90%;
+    margin: 2px auto;
+    padding: 5px;
+}
+
+.main_container .main_container_contact .main_container_contact_info form .form_block label {
+    display: block;
+    font-weight: 900;
+    font-size: 18px;
+    color: #794b0c;
+    text-transform: uppercase;
+}
+
+.main_container .main_container_contact .main_container_contact_info form .form_block input,
+.main_container .main_container_contact .main_container_contact_info form .form_block textarea {
+    display: block;
+    font-weight: 600;
+    font-size: 20px;
+    color: #794b0c;
+    border: none;
+    border-bottom: 2px solid #794b0c;
+    padding: 12px;
+    width: 90%;
+    margin: 5px auto;
+    resize: none;
+    background: transparent;
+}
+
+.main_container .main_container_contact .main_container_contact_info form button {
+    display: block;
+    font-weight: 900;
+    font-size: 20px;
+    color: #794b0c;
+    background: transparent;
+    border: 2px solid #794b0c;
+    padding: 12px;
+    width: 30%;
+    margin: 15px auto;
+    border-radius: 12px;
+}
+
 footer {
     background: #794b0c;
     color: #fefefe;
@@ -471,6 +527,22 @@ footer {
     .main_container_resource_download .main_container_resource_download_container .main_container_app_download .download_app_images img {
         width: 150px;
         margin: 10px 2px;
+    }
+
+
+    .main_container .main_container_contact .main_container_contact_info form {
+        width: 95%;
+        margin: 5px auto;
+        padding: 10px;
+    }
+
+    .main_container .main_container_contact .main_container_contact_info form .form_block input,
+    .main_container .main_container_contact .main_container_contact_info form .form_block textarea {
+        width: 95%;
+    }
+
+    .main_container .main_container_contact .main_container_contact_info form button {
+        width: 60%;
     }
 
     footer {
