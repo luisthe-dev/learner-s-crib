@@ -10,4 +10,12 @@ $('document').ready(function () {
         $('.aside_overlay').removeClass('active');
     })
 
+    $('*#about').on('click', function () {
+        $('html,body').animate({ scrollTop: $("#div_about").offset().top }, 'slow');
+    })
+
+    $('*#contact').on('click', function () {
+        $('html,body').animate({ scrollTop: $("#div_contact").offset().top }, 'slow');
+    })
+
 })
