@@ -12,10 +12,18 @@ $('document').ready(function () {
 
     $('*#about').on('click', function () {
         $('html,body').animate({ scrollTop: $("#div_about").offset().top }, 'slow');
+        if ($('aside').hasClass('active')) {
+            $('aside').removeClass('active');
+            $('.aside_overlay').removeClass('active');
+        }
     })
 
     $('*#contact').on('click', function () {
         $('html,body').animate({ scrollTop: $("#div_contact").offset().top }, 'slow');
+        if ($('aside').hasClass('active')) {
+            $('aside').removeClass('active');
+            $('.aside_overlay').removeClass('active');
+        }
     })
 
 })
