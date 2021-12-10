@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    text-decoration: none;
+    font-family: 'Glory', sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+
+.desktop_hide {
+    display: none !important;
+}
+
+.mobile_hide {
+    display: block !important;
+}
+
+@media (max-width: 500px) {
+    .desktop_hide {
+        display: block !important;
+    }
+
+    .mobile_hide {
+        display: none !important;
+    }
+}
