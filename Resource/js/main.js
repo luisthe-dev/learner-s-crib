@@ -168,4 +168,65 @@ $('document').ready(function () {
 
     })
 
+
+
+    $('#material_form').on('submit', function () {
+
+        $('#material_form button[type="submit"]').html('<i class="fa fa-chevron-right"></i> Processing <i class="fa fa-chevron-left"></i>');
+        $('#material_form button[type="submit"]').attr('disabled', true);
+
+        var Material_Form_Data = new FormData();
+
+        Material_Form_Data.append('Material_File', $('#Material_File')[0].files[0]);
+        Material_Form_Data.append('Material_Name', $('#Material_Name').val());
+        Material_Form_Data.append('Course_Title', $('#Course_Title').val());
+        Material_Form_Data.append('Course_Code', $('#Course_Code').val());
+        Material_Form_Data.append('Material_Description', $('#Material_Description').val());
+        Material_Form_Data.append('Course_Level', $('#Course_Level').val());
+
+        $.ajax({
+            url: 'https://localhost/learnerscrib/Resource/php/upload_new_material.php',
+            data: Material_Form_Data,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data)
+                data = JSON.parse(data)
+                if (data.status == 1) {
+                    swal("Good News!", data.message, "success", {
+                        button: "Thank You!",
+                    }).then(function () {
+                        location.assign('./');
+                    });
+                } else {
+                    swal("Oops!", data.message, "error", {
+                        button: "Oh, Okay.",
+                    });
+                    $('#material_form button[type="submit"]').html('Try Again!');
+                    $('#material_form button[type="submit"]').removeAttr('disabled')
+                }
+            },
+            error: function (data) {
+                console.log(data)
+                swal("Oops!", 'Error Connecting To Server', "error", {
+                    button: "Oh, Okay.",
+                });
+                $('#material_form button[type="submit"]').html('Try Again!');
+                $('#material_form button[type="submit"]').removeAttr('disabled')
+            },
+            fail: function (data) {
+                console.log(data)
+                swal("Oops!", 'Error Connecting To Server', "error", {
+                    button: "Oh, Okay.",
+                });
+                $('#material_form button[type="submit"]').html('Try Again!');
+                $('#material_form button[type="submit"]').removeAttr('disabled')
+            }
+        })
+
+        return false;
+
+    })
+
 })
