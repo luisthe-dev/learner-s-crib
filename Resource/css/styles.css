@@ -75,36 +75,36 @@ header .right button {
     border: 2px;
 }
 
-main {
+main#split_screen {
     padding: 10px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
 }
 
-main .main_left {
+main#split_screen .main_left {
     width: 75%;
     padding: 10px;
 }
 
-main .main_right {
+main#split_screen .main_right {
     width: 25%;
     padding: 10px;
 }
 
-main .main_left .main_search {
+main#split_screen .main_left .main_search {
     padding: 20px;
     width: 95%;
 }
 
-main .main_left .main_search form {
+main#split_screen .main_left .main_search form {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     width: 100%;
 }
 
-main .main_left .main_search input {
+main#split_screen .main_left .main_search input {
     width: 80%;
     padding: 12px;
     font-weight: 400;
@@ -116,7 +116,7 @@ main .main_left .main_search input {
     border-right: none;
 }
 
-main .main_left .main_search button {
+main#split_screen .main_left .main_search button {
     width: 20%;
     background: #b22222;
     color: #ffffff;
@@ -129,34 +129,34 @@ main .main_left .main_search button {
     border-left: none;
 }
 
-main .main_left .main_list {
+main#split_screen .main_left .main_list {
     padding: 20px 0px;
 }
 
-main .main_left .main_list .main_list_preferences {
+main#split_screen .main_left .main_list .main_list_preferences {
     margin: 20px auto;
     width: 95%;
     background: #ffffff;
 }
 
-main .main_left .main_list .main_list_preferences .main_list_preferences_extra {
+main#split_screen .main_left .main_list .main_list_preferences .main_list_preferences_extra {
     display: inline-block;
     margin: 2px 10px;
 }
 
-main .main_left .main_list .main_list_preferences .main_list_preferences_extra>* {
+main#split_screen .main_left .main_list .main_list_preferences .main_list_preferences_extra>* {
     display: block;
     margin: 2px 10px;
 }
 
-main .main_left .main_list .main_list_preferences .main_list_preferences_extra label {
+main#split_screen .main_left .main_list .main_list_preferences .main_list_preferences_extra label {
     font-weight: 600;
     font-size: 14px;
     color: #b22222;
     text-align: left;
 }
 
-main .main_left .main_list .main_list_preferences .main_list_preferences_extra select {
+main#split_screen .main_left .main_list .main_list_preferences .main_list_preferences_extra select {
     width: 70px;
     padding: 4px;
     font-size: 14px;
@@ -165,17 +165,17 @@ main .main_left .main_list .main_list_preferences .main_list_preferences_extra s
     border-radius: 4px;
 }
 
-main .main_left .main_list .maimain_list_file_leftn_list_files {
+main#split_screen .main_left .main_list .maimain_list_file_leftn_list_files {
     margin: 20px auto;
     width: 95%;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container {
     padding: 20px auto;
     margin: 2px auto;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file {
     margin: 20px auto;
     border: 2px solid #b22222;
     background: #ffffff;
@@ -186,17 +186,17 @@ main .main_left .main_list .main_list_files .main_list_file_container .main_list
     flex-wrap: nowrap;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left {
     width: 15%;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left img {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left img {
     width: 50%;
     display: block;
     margin: 2px auto;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left label {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left label {
     font-weight: 900;
     text-align: center;
     display: block;
@@ -204,49 +204,49 @@ main .main_left .main_list .main_list_files .main_list_file_container .main_list
     color: #b22222;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center {
     width: 65%;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center h3 {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center h3 {
     font-size: 24px;
     font-weight: 800;
     margin: 9px auto;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center h6 {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center h6 {
     font-size: 18px;
     font-weight: 600;
     margin: 3px auto;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center p {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center p {
     font-size: 14px;
     font-weight: 200;
     margin: 1px auto;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center p span {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center p span {
     font-weight: 600;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right {
     width: 20%;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right label {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right label {
     display: block;
     font-size: 18px;
     font-weight: 600;
     margin: 16px 0;
 }
 
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right i,
-main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right svg {
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right i,
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right svg {
     color: #D4AF37;
 }
 
-main .main_left .main_list .main_list_files button {
+main#split_screen .main_left .main_list .main_list_files button {
     width: 30%;
     padding: 12px;
     margin: 10px auto;
@@ -259,35 +259,35 @@ main .main_left .main_list .main_list_files button {
     border-radius: 4px;
 }
 
-main .main_left .main_list .main_list_files button:hover {
+main#split_screen .main_left .main_list .main_list_files button:hover {
     background: #ffffff;
     border-color: #b22222;
     color: #b22222;
 }
 
-main .main_right>* {
+main#split_screen .main_right>* {
     background: #ffffff;
     border-radius: 12px;
     margin: 20px auto;
     padding: 40px 5px;
 }
 
-main .main_right .main_right_account {
+main#split_screen .main_right .main_right_account {
     text-align: center;
 }
 
-main .main_right .main_right_account p {
+main#split_screen .main_right .main_right_account p {
     display: block;
     font-size: 18px;
     font-weight: 400;
 }
 
-main .main_right .main_right_account p a {
+main#split_screen .main_right .main_right_account p a {
     color: #b22222;
     font-weight: 600;
 }
 
-main .main_right .main_right_account label {
+main#split_screen .main_right .main_right_account label {
     display: block;
     font-size: 24px;
     font-weight: 600;
@@ -295,17 +295,17 @@ main .main_right .main_right_account label {
 
 }
 
-main .main_right .main_right_top_results {
+main#split_screen .main_right .main_right_top_results {
     padding: 40px;
 }
 
-main .main_right .main_right_top_results h2 {
+main#split_screen .main_right .main_right_top_results h2 {
     font-size: 24px;
     font-weight: 600;
     color: #b22222;
 }
 
-main .main_right .main_right_top_results h2:before {
+main#split_screen .main_right .main_right_top_results h2:before {
     content: ' ';
     position: absolute;
     height: 2px;
@@ -314,7 +314,7 @@ main .main_right .main_right_top_results h2:before {
     width: 150px;
 }
 
-main .main_right .main_right_top_results .main_right_top_result {
+main#split_screen .main_right .main_right_top_results .main_right_top_result {
     padding: 5px;
     margin: 6px auto;
     display: flex;
@@ -322,17 +322,17 @@ main .main_right .main_right_top_results .main_right_top_result {
     justify-content: space-evenly;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left {
     width: 25%;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left img {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left img {
     width: 100%;
     margin: 6px auto;
     display: block;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left label {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left label {
     font-weight: 600;
     font-size: 14px;
     display: block;
@@ -341,27 +341,156 @@ main .main_right .main_right_top_results .main_right_top_result .main_right_top_
     color: #b22222;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right {
     width: 75%;
     padding-left: 8px;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right h3 {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right h3 {
     font-size: 24px;
     font-weight: 600;
     margin: 8px auto;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right h6 {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right h6 {
     font-size: 18px;
     font-weight: 400;
     margin: 5px auto;
 }
 
-main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right p {
+main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right p {
     font-size: 14px;
     font-weight: 200;
     margin: 3px auto;
+}
+
+main#account_forms {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    background: url('../img/login_back.jpg') center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+main#account_forms>* {
+    width: 50%;
+    padding: 20px;
+}
+
+main#account_forms>*.active {
+    background: #303030c0;
+    padding-top: 10vh;
+}
+
+main#account_forms>*.inactive {
+    padding-top: 20vh;
+}
+
+main#account_forms .active h4 {
+    font-size: 54px;
+    font-weight: 600;
+    text-align: center;
+    margin: 8px auto;
+    color: #ffffff;
+}
+
+main#account_forms .active p {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 2px auto;
+    color: #ffffff;
+}
+
+main#account_forms .active form {
+    width: 50%;
+    margin: 10px auto;
+    background: #ffffffcb;
+    padding: 40px 20px;
+    border-radius: 12px;
+}
+
+main#account_forms .active form>* {
+    display: block;
+}
+
+main#account_forms .active form label {
+    font-size: 14px;
+    font-weight: 900;
+    color: #b22222;
+    margin: 3px auto;
+}
+
+main#account_forms .active form input {
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid #ededed;
+    color: #b22222;
+    font-size: 16px;
+    font-weight: 400;
+    width: 95%;
+    padding: 6px;
+    margin: 5px auto;
+}
+
+main#account_forms .active form button {
+    background: #b22222;
+    color: #ffffff;
+    border-radius: 6px;
+    border: 2px solid #f8f8f8;
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    padding: 10px 40px;
+    margin: 10px auto;
+}
+
+main#account_forms .active form a {
+    color: #b22222;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    padding: 5px;
+    margin: 20px auto;
+}
+
+main#account_forms .active form .left,
+main#account_forms .active form .right {
+    display: none;
+}
+
+main#account_forms .inactive h3 {
+    font-size: 36px;
+    text-align: center;
+    color: #ffffff;
+    margin: 10px auto;
+}
+
+main#account_forms .inactive a {
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    color: #b22222;
+    font-weight: 600;
+    margin: 5px auto;
+}
+
+main#account_forms .inactive h1 {
+    font-size: 48px;
+    font-weight: 200;
+    text-align: center;
+    display: block;
+    color: #ffffff;
+}
+
+main#account_forms .inactive p {
+    font-size: 24px;
+    text-align: center;
+    color: #ffffff;
+    margin: 10px auto;
 }
 
 @media (max-width: 700px) {
@@ -373,42 +502,75 @@ main .main_right .main_right_top_results .main_right_top_result .main_right_top_
         float: none;
     }
 
-    main {
+    main#split_screen {
         padding: 10px;
         display: flex;
         flex-wrap: wrap;
     }
 
-    main .main_left {
+    main#split_screen .main_left {
         width: 95%;
     }
 
-    main .main_right {
+    main#split_screen .main_right {
         width: 95%;
     }
 
-    main .main_left .main_search {
+    main#split_screen .main_left .main_search {
         padding: 5px;
         width: 95%;
     }
 
-    main .main_left .main_search button span {
+    main#split_screen .main_left .main_search button span {
         display: none;
     }
 
-    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left {
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left {
         width: 30%;
     }
 
-    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left img {
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left img {
         width: 90%;
     }
 
-    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center {
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center {
         width: 70%;
     }
 
-    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right {
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right {
         display: none;
+    }
+
+    main#account_forms {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    main#account_forms>* {
+        width: 95%;
+        padding: 20px;
+    }
+
+    main#account_forms>*.active {
+        background: #303030c0;
+        padding-top: 10vh;
+    }
+
+    main#account_forms>*.inactive {
+        padding-top: 20vh;
+        display: none;
+    }
+
+    main#account_forms .active form {
+        width: 90%;
+    }
+
+    main#account_forms .active form .left,
+    main#account_forms .active form .right {
+        display: block;
+    }
+
+    main#account_forms .active form>*>a {
+        font-size: 12px;
     }
 }
