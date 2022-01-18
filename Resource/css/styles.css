@@ -18,6 +18,10 @@
     clear: both;
 }
 
+a {
+    color: black;
+}
+
 html,
 body {
     background: #f8f8f8;
@@ -80,10 +84,12 @@ main {
 
 main .main_left {
     width: 75%;
+    padding: 10px;
 }
 
 main .main_right {
     width: 25%;
+    padding: 10px;
 }
 
 main .main_left .main_search {
@@ -195,6 +201,7 @@ main .main_left .main_list .main_list_files .main_list_file_container .main_list
     text-align: center;
     display: block;
     font-size: 14px;
+    color: #b22222;
 }
 
 main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center {
@@ -258,4 +265,150 @@ main .main_left .main_list .main_list_files button:hover {
     color: #b22222;
 }
 
-@media (max-width: 500px) {}
+main .main_right>* {
+    background: #ffffff;
+    border-radius: 12px;
+    margin: 20px auto;
+    padding: 40px 5px;
+}
+
+main .main_right .main_right_account {
+    text-align: center;
+}
+
+main .main_right .main_right_account p {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+main .main_right .main_right_account p a {
+    color: #b22222;
+    font-weight: 600;
+}
+
+main .main_right .main_right_account label {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 10px auto;
+
+}
+
+main .main_right .main_right_top_results {
+    padding: 40px;
+}
+
+main .main_right .main_right_top_results h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #b22222;
+}
+
+main .main_right .main_right_top_results h2:before {
+    content: ' ';
+    position: absolute;
+    height: 2px;
+    background: #b22222;
+    border-radius: 6px;
+    width: 150px;
+}
+
+main .main_right .main_right_top_results .main_right_top_result {
+    padding: 5px;
+    margin: 6px auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left {
+    width: 25%;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left img {
+    width: 100%;
+    margin: 6px auto;
+    display: block;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left label {
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    margin: 2px auto;
+    text-align: center;
+    color: #b22222;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right {
+    width: 75%;
+    padding-left: 8px;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 8px auto;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right h6 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 5px auto;
+}
+
+main .main_right .main_right_top_results .main_right_top_result .main_right_top_result_right p {
+    font-size: 14px;
+    font-weight: 200;
+    margin: 3px auto;
+}
+
+@media (max-width: 700px) {
+
+    header .left,
+    header .right,
+    .header .left,
+    .header .right {
+        float: none;
+    }
+
+    main {
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    main .main_left {
+        width: 95%;
+    }
+
+    main .main_right {
+        width: 95%;
+    }
+
+    main .main_left .main_search {
+        padding: 5px;
+        width: 95%;
+    }
+
+    main .main_left .main_search button span {
+        display: none;
+    }
+
+    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left {
+        width: 30%;
+    }
+
+    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_left img {
+        width: 90%;
+    }
+
+    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_center {
+        width: 70%;
+    }
+
+    main .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right {
+        display: none;
+    }
+}
