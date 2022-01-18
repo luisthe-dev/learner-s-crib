@@ -3,7 +3,7 @@
 include('./learners_crib_resource.php');
 
 $Return['status'] = 0;
-$Return['message'] = 1;
+$Return['message'] = 'Access Denied';
 
 if (isset($_POST['Email'])) {
 
@@ -17,11 +17,11 @@ if (isset($_POST['Email'])) {
         $User_Details = mysqli_fetch_array($Found_User);
         $Hash = $User_Details['Password'];
         if (password_verify($Password, $Hash)) {
-            session_start();
-            $_SESSION['resource_centre_user_id'] = bin2hex($Email);
-            setcookie('resource_centre_user_id', bin2hex($Email), time() + (60 * 60 * 24 * 30));
+            $_SESSION['resource_centre_user_id'] = bin2hex($User_Details['Id']);
+            setcookie('resource_centre_user_id', bin2hex($User_Details['Id']), time() + (60 * 60 * 24 * 30));
             $Return['status'] = 1;
             $Return['message'] = 'User Logged In Successfully';
+            $Return['Username'] = $User_Details['Username'];
         } else {
             $Return['message'] = 'Incorrect Login Details';
         }

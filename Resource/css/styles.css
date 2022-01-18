@@ -493,6 +493,98 @@ main#account_forms .inactive p {
     margin: 10px auto;
 }
 
+main#split_screen .main_left .upload_new_material {
+    width: 60%;
+    margin: 20px auto;
+}
+
+main#split_screen .main_left .upload_new_material h3 {
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+    color: #b22222;
+    margin: 10px auto;
+}
+
+main#split_screen .main_left .upload_new_material p {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    color: #b22222;
+    margin: 2px auto;
+}
+
+main#split_screen .main_left .upload_new_material form {
+    width: 80%;
+    margin: 30px auto;
+    border: thin solid #b22222;
+    padding: 20px;
+}
+
+main#split_screen .main_left .upload_new_material form>* {
+    display: block;
+}
+
+main#split_screen .main_left .upload_new_material form label {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0;
+    color: #b22222;
+}
+
+main#split_screen .main_left .upload_new_material form input,
+main#split_screen .main_left .upload_new_material form textarea,
+main#split_screen .main_left .upload_new_material form select {
+    width: 90%;
+    padding: 12px;
+    border: 2px solid #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    color: #b22222;
+    background: transparent;
+    border-radius: 4px;
+    resize: none;
+}
+
+main#split_screen .main_left .upload_new_material form select {
+    width: 95%;
+}
+
+main#split_screen .main_left .upload_new_material form input[type="file"] {
+    display: none;
+}
+
+main#split_screen .main_left .upload_new_material form button#select_a_file {
+    border: 2px dashed #b22222;
+    background: #ffffff;
+    color: #b22222;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .9s;
+    padding: 12px;
+}
+
+main#split_screen .main_left .upload_new_material form button#select_a_file:hover {
+    border: 2px solid #b22222;
+    background: #f8f8f8;
+}
+
+main#split_screen .main_left .upload_new_material form button[type="submit"] {
+    display: block;
+    padding: 12px 40px;
+    font-size: 12px;
+    font-weight: 900;
+    margin: 12px auto;
+    background: transparent;
+    border: thin solid #b22222;
+    color: #b22222;
+}
+
+main#split_screen .main_left .upload_new_material form button[type="submit"]:hover {
+    background: #b22222;
+    color: #ffffff;
+}
+
 @media (max-width: 700px) {
 
     header .left,

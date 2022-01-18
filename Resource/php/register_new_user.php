@@ -3,7 +3,7 @@
 include('./learners_crib_resource.php');
 
 $Return['status'] = 0;
-$Return['message'] = 1;
+$Return['message'] = 'Access Denied';
 
 if (isset($_POST['Email'])) {
 
@@ -18,10 +18,10 @@ if (isset($_POST['Email'])) {
     if (mysqli_num_rows($Found_User) == 0) {
         $Password = password_hash($Password, PASSWORD_DEFAULT);
         $Accept_User = "INSERT INTO users (Name, Username, Email, Password) VALUES ('$Name', '$User', '$Email', '$Password') ";
-        if(mysqli_query($LearnersCribResource, $Accept_User)){
+        if (mysqli_query($LearnersCribResource, $Accept_User)) {
             $Return['status'] = 1;
             $Return['message'] = 'User Registered Successfully!';
-        }else{
+        } else {
             $Return['message'] = 'Server Error. Please Try Again Later.';
         }
     } else {

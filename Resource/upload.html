@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <title> Learner's Crib Resource Centre </title>
+
+        <meta name="viewport" content="width=device-width,inital-scale=1,user-scalable=no">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+            rel="stylesheet">
+        <link href="./css/styles.css" rel="stylesheet">
+        <link href="./css/all.min.css" rel="stylesheet">
+
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/all.min.js"></script>
+        <script type="text/javascript" src="./js/sweetalert.min.js"></script>
+        <script type="text/javascript" src="./js/main.js"></script>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div class="right">
+                <button onclick="location.assign('./login.html')"> Sign In or Sign Up </button>
+            </div>
+
+            <div class="left">
+                Learner's Crib Resource
+            </div>
+
+            <div class="clear"></div>
+
+        </header>
+
+        <div class="header">
+            <div class="right">
+                <button> Submit A Class Material </button>
+            </div>
+
+            <div class="left">
+                <a href="#"> About Us </a>
+                <a href="#"> Resources </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <main id="split_screen">
+
+            <div class="main_left">
+
+
+                <div class="upload_new_material">
+
+                    <h3> Submit A Course Material </h3>
+                    <p> Add A Little Knowledge To The Community </p>
+
+                    <form id="material_form">
+
+                        <label> Material Name </label>
+                        <input type="text" placeholder="Material Name" id="Material_Name" required>
+
+                        <label> Course Title </label>
+                        <input type="text" placeholder="Course Title" id="Course_Title" required>
+
+                        <label> Course Code </label>
+                        <input type="text" placeholder="Course Code" id="Course_Code" required>
+
+                        <label> Material Description </label>
+                        <textarea placeholder="Material Description" id="Material_Description" rows="6"></textarea>
+
+                        <label> Course Level </label>
+                        <select id="Course_Level" required>
+                            <option selected disabled> Select Course Level </option>
+                            <option value="100"> 100 Level </option>
+                            <option value="200"> 200 Level </option>
+                            <option value="300"> 300 Level </option>
+                            <option value="400"> 400 Level </option>
+                            <option value="500"> 500 Level </option>
+                            <option value="600"> 600 Level </option>
+                        </select>
+
+                        <label> Select A File </label>
+                        <button id="select_a_file" type="button"> Upload A File </button>
+                        <input type="file" id="Material_File" required>
+
+                        <button type="submit"> Submit New Material </button>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+            <div class="main_right">
+
+                <div class="main_right_account">
+
+                    <p>New Here?<a href="./register.html"> Join Free </a></p>
+                    <label> or </label>
+                    <p>Continue Your Journey!<a href="./login.html"> Sign In </a></p>
+
+                </div>
+
+                <div class="main_right_top_results">
+                    <h2> Top Views </h2>
+                    <div class="main_right_top_result">
+                        <div class="main_right_top_result_left">
+                            <img src="./img_placeholder/docx.png">
+                            <label> DOCX File </label>
+                        </div>
+                        <div class="main_right_top_result_right">
+                            <h3> Material Name </h3>
+                            <h6> Short Description </h6>
+                            <p> 10,024 Views </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main_right_top_results">
+                    <h2> Top Downloads </h2>
+                    <div class="main_right_top_result">
+                        <div class="main_right_top_result_left">
+                            <img src="./img_placeholder/pdf.png">
+                            <label> PDF File </label>
+                        </div>
+                        <div class="main_right_top_result_right">
+                            <h3> Material Name </h3>
+                            <h6> Short Description </h6>
+                            <p> 10,024 Downloads </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </body>
+
+</html>
