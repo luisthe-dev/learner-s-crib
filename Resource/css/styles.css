@@ -665,4 +665,13 @@ main#split_screen .main_left .upload_new_material form button[type="submit"]:hov
     main#account_forms .active form>*>a {
         font-size: 12px;
     }
+
+    main#split_screen .main_left .upload_new_material {
+        width: 95%;
+    }
+
+
+    main#split_screen .main_left .upload_new_material form {
+        width: 90%;
+    }
 }

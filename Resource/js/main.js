@@ -15,7 +15,7 @@ $('document').ready(function () {
         var Password = $('#Password').val();
 
         $.ajax({
-            url: 'https://localhost/learnerscrib/Resource/php/register_new_user.php',
+            url: 'http://localhost/learnerscrib/Resource/php/register_new_user.php',
             data: {
                 Full_Name,
                 User_Name,
@@ -71,7 +71,7 @@ $('document').ready(function () {
         var Password = $('#Password').val();
 
         $.ajax({
-            url: 'https://localhost/learnerscrib/Resource/php/login_user.php',
+            url: 'http://localhost/learnerscrib/Resource/php/login_user.php',
             data: {
                 Email,
                 Password
@@ -126,7 +126,7 @@ $('document').ready(function () {
         var Email = $('#Email').val();
 
         $.ajax({
-            url: 'https://localhost/learnerscrib/Resource/php/forgot_user_password.php',
+            url: 'http://localhost/learnerscrib/Resource/php/forgot_user_password.php',
             data: {
                 Email
             },
@@ -168,6 +168,19 @@ $('document').ready(function () {
 
     })
 
+    $.ajax({
+        url: 'http://localhost/learnerscrib/Resource/php/get_all_materials.php',
+        success: function (data) {
+            data = JSON.parse(data)
+            console.log(data)
+        },
+        error: function (data) {
+            console.log(data)
+        },
+        fail: function (data) {
+            console.log(data)
+        }
+    })
 
 
     $('#material_form').on('submit', function () {
@@ -185,7 +198,7 @@ $('document').ready(function () {
         Material_Form_Data.append('Course_Level', $('#Course_Level').val());
 
         $.ajax({
-            url: 'https://localhost/learnerscrib/Resource/php/upload_new_material.php',
+            url: 'http://localhost/learnerscrib/Resource/php/upload_new_material.php',
             data: Material_Form_Data,
             method: 'POST',
             contentType: false,

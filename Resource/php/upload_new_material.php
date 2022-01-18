@@ -7,7 +7,7 @@ $Return['message'] = 'Access Denied';
 $Set = 0;
 
 if (isset($_SESSION['resource_centre_user_id'])) {
-    $User = $_SESSSION['resource_centre_user_id'];
+    $User = $_SESSION['resource_centre_user_id'];
     $User = pack('H*', $User);
     $Set = 1;
 } elseif (isset($_COOKIE['resource_centre_user_id'])) {
@@ -37,17 +37,17 @@ if (isset($_POST['Material_Name']) && $Set == 1) {
         $Material_Path_Name = explode(' ', $Material_Name);
         $Material_Path_Name = implode('_', $Material_Path_Name);
 
-        $Material_Path_Extension = explode('.', $Material_File);
+        $Material_Path_Extension = explode('.', $Material_File['name']);
         $Material_Path_Extension = $Material_Path_Extension[(sizeof($Material_Path_Extension) - 1)];
 
         $Material_Path_New_Full = $Material_Path_Name . '.' . $Material_Path_Extension;
 
-        if (!file_exists($Material_Path_Extension)) {
-            mkdir($Material_Path_Extension);
+        if (!file_exists('../materials/' . $Material_Path_Extension)) {
+            mkdir('../materials/' . $Material_Path_Extension);
         }
 
-        if (move_uploaded_file($Material_File['tmp_name'], '../' . $Material_Path_Extension . '/' . $Material_Path_New_Full)) {
-            $Insert_New_Material = "INSERT INTO materials (File_Name, File_Path, File_Description, Course_Code, Course_Title, Course_Level, User_Id, Ratings) VALUES ('$Material_Name', '$Material_Path_New_Full', '$Material_Description', '$Course_Code', '$Course_Title', '$Course_Level', '$User', '$Ratings') ";
+        if (move_uploaded_file($Material_File['tmp_name'], '../materials/' . $Material_Path_Extension . '/' . $Material_Path_New_Full)) {
+            $Insert_New_Material = "INSERT INTO materials (File_Name, File_Path, File_Description, File_Type, Course_Code, Course_Title, Course_Level, User_Id, Ratings) VALUES ('$Material_Name', '$Material_Path_New_Full', '$Material_Description', '$Material_Path_Extension', '$Course_Code', '$Course_Title', '$Course_Level', '$User', '$Ratings') ";
             if (mysqli_query($LearnersCribResource, $Insert_New_Material)) {
                 $Return['status'] = 1;
                 $Return['message'] = 'Material Added To Community Successfully';
