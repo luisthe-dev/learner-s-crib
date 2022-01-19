@@ -27,7 +27,7 @@
         <header>
 
             <div class="right">
-                <button onclick="location.assign('./login')"> Sign In or Sign Up </button>
+                <button onclick="location.assign('./login')" id="account_management"> Sign In or Sign Up </button>
             </div>
 
             <div class="left">
@@ -40,7 +40,7 @@
 
         <div class="header">
             <div class="right">
-                <button onclick="location.assign('./upload')"> Submit A Class Material </button>
+                <button onclick="location.assign('./upload')" id="submit_class_material"> Submit A Class Material </button>
             </div>
 
             <div class="left">
@@ -84,8 +84,11 @@
                         <div class="left">
                             <div class="main_list_preferences_extra">
                                 <label> Sort By </label>
-                                <select>
-                                    <option> Sort By </option>
+                                <select id="sort_results_by">
+                                    <option value="Name"> Name </option>
+                                    <option value="Type"> Type </option>
+                                    <option value="Downloads"> Downloads </option>
+                                    <option value="Views"> Views </option>
                                 </select>
                             </div>
                         </div>
@@ -113,32 +116,12 @@
 
                 <div class="main_right_top_results">
                     <h2> Top Views </h2>
-                    <div class="main_right_top_result">
-                        <div class="main_right_top_result_left">
-                            <img src="./img_placeholder/docx.png">
-                            <label> DOCX File </label>
-                        </div>
-                        <div class="main_right_top_result_right">
-                            <h3> Material Name </h3>
-                            <h6> Short Description </h6>
-                            <p> 10,024 Views </p>
-                        </div>
-                    </div>
+                    <div class="main_right_top_results_container" id="main_right_top_results_container_views"></div>
                 </div>
 
                 <div class="main_right_top_results">
                     <h2> Top Downloads </h2>
-                    <div class="main_right_top_result">
-                        <div class="main_right_top_result_left">
-                            <img src="./img_placeholder/pdf.png">
-                            <label> PDF File </label>
-                        </div>
-                        <div class="main_right_top_result_right">
-                            <h3> Material Name </h3>
-                            <h6> Short Description </h6>
-                            <p> 10,024 Downloads </p>
-                        </div>
-                    </div>
+                    <div class="main_right_top_results_container" id="main_right_top_results_container_downloads"></div>
                 </div>
 
             </div>

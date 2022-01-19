@@ -157,7 +157,7 @@ main#split_screen .main_left .main_list .main_list_preferences .main_list_prefer
 }
 
 main#split_screen .main_left .main_list .main_list_preferences .main_list_preferences_extra select {
-    width: 70px;
+    width: 100px;
     padding: 4px;
     font-size: 14px;
     font-weight: 400;

@@ -1,10 +1,68 @@
+Materials = null;
 $('document').ready(function () {
+
+    if (localStorage.resource_centre_user_logged_in) {
+        $('#submit_class_material').attr('onclick', "location.assign('./upload')");
+        $('#account_management').attr('onclick', "location.assign('./logout')");
+        $('#account_management').text('Sign Out');
+    } else {
+        $('#submit_class_material').attr('onclick', 'swal("Oops!", data.message, "error", {button: "Oh, Okay.",});location.assign("./upload")"');
+        $('#account_management').attr('onclick', "location.assign('./login')");
+        $('#account_management').text('Sign In or Sign Up');
+    }
 
     // var main_url = 'http://localhost/learnerscrib/Resource/php';
     var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
     $('#select_a_file').on('click', function () {
         $('#Material_File').click();
+    })
+
+    $('#sort_results_by').on('change', function () {
+        var sort_by = $('#sort_results_by').val()
+
+        if (sort_by == 'Name') {
+            Materials.sort((a, b) => (a.File_Name < b.File_Name ? 1 : -1))
+        }
+        if (sort_by == 'Type') {
+            Materials.sort((a, b) => (a.File_Type < b.File_Type ? 1 : -1))
+        }
+        if (sort_by == 'Downloads') {
+            Materials.sort((a, b) => (a.Download_Count < b.Download_Count ? 1 : -1))
+        }
+        if (sort_by == 'Views') {
+            Materials.sort((a, b) => (a.View_Count < b.View_Count ? 1 : -1))
+        }
+
+        $('#main_list_file_container').html('');
+
+        for (var material_count = 0; material_count < Materials.length; material_count++) {
+            var main_data = Materials[material_count];
+            var AddMaterial =
+                '<a href="#">' +
+                '<div class="main_list_file">' +
+                '<div class="main_list_file_left">' +
+                '<img src="./img_placeholder/' + main_data.File_Type + '.png" alt="Material Title (pdf file)">' +
+                '<label> ' + main_data.File_Type.toUpperCase() + ' File </label>' +
+                '</div>' +
+                '<div class="main_list_file_center">' +
+                '<h3> ' + main_data.File_Name + ' </h3>' +
+                '<h6> ' + main_data.File_Description.substring(0, 90) + '... </h6>' +
+                '<p> Uploaded By <span> ' + main_data.User + ' </span> On <span> ' + main_data.When_Uploaded + ' </span> </p>' +
+                '</div>' +
+                '<div class="main_list_file_right">' +
+                '<label>' + parseInt(main_data.Download_Count).toLocaleString() + ' Downloads </label>' +
+                '<i class="fas fa-star"></i>' +
+                '<i class="fas fa-star"></i>' +
+                '<i class="fas fa-star"></i>' +
+                '<i class="far fa-star"></i>' +
+                '<i class="far fa-star"></i>' +
+                '</div>' +
+                '</div>' +
+                '</a>';
+            $('#main_list_file_container').append(AddMaterial);
+        }
+
     })
 
     $('#Register_Form').on('submit', function () {
@@ -176,8 +234,16 @@ $('document').ready(function () {
         success: function (data) {
             data = JSON.parse(data)
             if (data.status == 1) {
-                for (var material_count = 0; material_count < data.data.length; material_count++) {
-                    var main_data = data.data[material_count];
+                Materials = data.data;
+                //Ascending
+                // Materials.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
+                //Descending
+                // Materials.sort((a, b) => (a.File_Name < b.File_Name ? 1 : -1))
+
+                //For Main Page
+                Materials.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
+                for (var material_count = 0; material_count < Materials.length; material_count++) {
+                    var main_data = Materials[material_count];
                     var AddMaterial =
                         '<a href="#">' +
                         '<div class="main_list_file">' +
@@ -187,11 +253,11 @@ $('document').ready(function () {
                         '</div>' +
                         '<div class="main_list_file_center">' +
                         '<h3> ' + main_data.File_Name + ' </h3>' +
-                        '<h6> ' + main_data.File_Description + ' </h6>' +
+                        '<h6> ' + main_data.File_Description.substring(0, 90) + '... </h6>' +
                         '<p> Uploaded By <span> ' + main_data.User + ' </span> On <span> ' + main_data.When_Uploaded + ' </span> </p>' +
                         '</div>' +
                         '<div class="main_list_file_right">' +
-                        '<label>' + main_data.Download_Count + ' Downloads </label>' +
+                        '<label>' + parseInt(main_data.Download_Count).toLocaleString() + ' Downloads </label>' +
                         '<i class="fas fa-star"></i>' +
                         '<i class="fas fa-star"></i>' +
                         '<i class="fas fa-star"></i>' +
@@ -202,7 +268,50 @@ $('document').ready(function () {
                         '</a>';
                     $('#main_list_file_container').append(AddMaterial);
                 }
-                if (data.data.length < 13) {
+
+                //For Top Views
+                Materials.sort((a, b) => (a.View_Count < b.View_Count ? 1 : -1))
+                for (var material_count_top_views = 0; material_count_top_views < Materials.length; material_count_top_views++) {
+                    var main_data = Materials[material_count_top_views];
+                    var AddMaterial =
+                        '<a href="#">' +
+                        '<div class="main_right_top_result">' +
+                        '<div class="main_right_top_result_left">' +
+                        '<img src="./img_placeholder/' + main_data.File_Type + '.png">' +
+                        '<label> ' + main_data.File_Type.toUpperCase() + ' File </label>' +
+                        '</div>' +
+                        '<div class="main_right_top_result_right">' +
+                        '<h3> ' + main_data.File_Name + ' </h3>' +
+                        '<h6> ' + main_data.File_Description.substring(0, 20) + '... </h6>' +
+                        '<p> ' + parseInt(main_data.View_Count).toLocaleString() + ' Views </p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>';
+                    $('#main_right_top_results_container_views').append(AddMaterial);
+                }
+
+                //For Top Downloads
+                Materials.sort((a, b) => (a.Download_Count < b.Download_Count ? 1 : -1))
+                for (var material_count_top_downloads = 0; material_count_top_downloads < Materials.length; material_count_top_downloads++) {
+                    var main_data = Materials[material_count_top_downloads];
+                    var AddMaterial =
+                        '<a href="#">' +
+                        '<div class="main_right_top_result">' +
+                        '<div class="main_right_top_result_left">' +
+                        '<img src="./img_placeholder/' + main_data.File_Type + '.png">' +
+                        '<label> ' + main_data.File_Type.toUpperCase() + ' File </label>' +
+                        '</div>' +
+                        '<div class="main_right_top_result_right">' +
+                        '<h3> ' + main_data.File_Name + ' </h3>' +
+                        '<h6> ' + main_data.File_Description.substring(0, 20) + '... </h6>' +
+                        '<p> ' + parseInt(main_data.Download_Count).toLocaleString() + ' Downloads </p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>';
+                    $('#main_right_top_results_container_downloads').append(AddMaterial);
+                }
+
+                if (Materials.length < 13) {
                     $('#load_more_button').remove()
                 }
             } else {
