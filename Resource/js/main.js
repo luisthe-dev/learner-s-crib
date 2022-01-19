@@ -1,7 +1,7 @@
 $('document').ready(function () {
 
     // var main_url = 'http://localhost/learnerscrib/Resource/php';
-    var main_url = 'http://platiniumxpwallet.com/learnerscrib';
+    var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
     $('#select_a_file').on('click', function () {
         $('#Material_File').click();
