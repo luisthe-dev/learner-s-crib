@@ -165,14 +165,20 @@ main#split_screen .main_left .main_list .main_list_preferences .main_list_prefer
     border-radius: 4px;
 }
 
-main#split_screen .main_left .main_list .maimain_list_file_leftn_list_files {
+main#split_screen .main_left .main_list .main_list_files {
     margin: 20px auto;
     width: 95%;
 }
 
 main#split_screen .main_left .main_list .main_list_files .main_list_file_container {
-    padding: 20px auto;
+    padding: 20px 0;
     margin: 2px auto;
+}
+
+#main_list_file_container>h3 {
+    text-align: center;
+    font-size: 36px;
+    color: #b22222;
 }
 
 main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file {

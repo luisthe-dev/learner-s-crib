@@ -1,5 +1,8 @@
 $('document').ready(function () {
 
+    // var main_url = 'http://localhost/learnerscrib/Resource/php';
+    var main_url = 'http://platiniumxpwallet.com/learnerscrib';
+
     $('#select_a_file').on('click', function () {
         $('#Material_File').click();
     })
@@ -15,7 +18,7 @@ $('document').ready(function () {
         var Password = $('#Password').val();
 
         $.ajax({
-            url: 'http://localhost/learnerscrib/Resource/php/register_new_user.php',
+            url: main_url + '/register_new_user',
             data: {
                 Full_Name,
                 User_Name,
@@ -30,7 +33,7 @@ $('document').ready(function () {
                     swal("Good News!", data.message, "success", {
                         button: "Thank You!",
                     }).then(function () {
-                        location.assign('./login.html');
+                        location.assign('./login');
                     });
                 } else {
                     swal("Oops!", data.message, "error", {
@@ -71,7 +74,7 @@ $('document').ready(function () {
         var Password = $('#Password').val();
 
         $.ajax({
-            url: 'http://localhost/learnerscrib/Resource/php/login_user.php',
+            url: main_url + '/login_user',
             data: {
                 Email,
                 Password
@@ -126,7 +129,7 @@ $('document').ready(function () {
         var Email = $('#Email').val();
 
         $.ajax({
-            url: 'http://localhost/learnerscrib/Resource/php/forgot_user_password.php',
+            url: main_url + '/forgot_user_password',
             data: {
                 Email
             },
@@ -169,10 +172,43 @@ $('document').ready(function () {
     })
 
     $.ajax({
-        url: 'http://localhost/learnerscrib/Resource/php/get_all_materials.php',
+        url: main_url + '/get_all_materials',
         success: function (data) {
             data = JSON.parse(data)
-            console.log(data)
+            if (data.status == 1) {
+                for (var material_count = 0; material_count < data.data.length; material_count++) {
+                    var main_data = data.data[material_count];
+                    var AddMaterial =
+                        '<a href="#">' +
+                        '<div class="main_list_file">' +
+                        '<div class="main_list_file_left">' +
+                        '<img src="./img_placeholder/' + main_data.File_Type + '.png" alt="Material Title (pdf file)">' +
+                        '<label> ' + main_data.File_Type.toUpperCase() + ' File </label>' +
+                        '</div>' +
+                        '<div class="main_list_file_center">' +
+                        '<h3> ' + main_data.File_Name + ' </h3>' +
+                        '<h6> ' + main_data.File_Description + ' </h6>' +
+                        '<p> Uploaded By <span> ' + main_data.User + ' </span> On <span> ' + main_data.When_Uploaded + ' </span> </p>' +
+                        '</div>' +
+                        '<div class="main_list_file_right">' +
+                        '<label>' + main_data.Download_Count + ' Downloads </label>' +
+                        '<i class="fas fa-star"></i>' +
+                        '<i class="fas fa-star"></i>' +
+                        '<i class="fas fa-star"></i>' +
+                        '<i class="far fa-star"></i>' +
+                        '<i class="far fa-star"></i>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>';
+                    $('#main_list_file_container').append(AddMaterial);
+                }
+                if (data.data.length < 13) {
+                    $('#load_more_button').remove()
+                }
+            } else {
+                $('#main_list_file_container').html('<h3> No Materials Are Currently Available </h3>')
+                $('#load_more_button').remove()
+            }
         },
         error: function (data) {
             console.log(data)
@@ -198,7 +234,7 @@ $('document').ready(function () {
         Material_Form_Data.append('Course_Level', $('#Course_Level').val());
 
         $.ajax({
-            url: 'http://localhost/learnerscrib/Resource/php/upload_new_material.php',
+            url: main_url + '/upload_new_material',
             data: Material_Form_Data,
             method: 'POST',
             contentType: false,
