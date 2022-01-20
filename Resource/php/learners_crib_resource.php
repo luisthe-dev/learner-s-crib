@@ -10,11 +10,18 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 
 session_start();
 
+// $DB = array(
+//     "HOST" => 'localhost',
+//     "USER" => 'root',
+//     "PASS" => '',
+//     "NAME" => 'learnerscrib'
+// );
+
 $DB = array(
     "HOST" => 'localhost',
-    "USER" => 'root',
-    "PASS" => '',
-    "NAME" => 'learnerscrib'
+    "USER" => 'platdhvs_learnerscrib',
+    "PASS" => 'Learner\'sCrib2021',
+    "NAME" => 'platdhvs_learnerscrib'
 );
 
 $LearnersCribResource = mysqli_connect($DB['HOST'], $DB['USER'], $DB['PASS'], $DB['NAME']);
