@@ -31,11 +31,10 @@ function Download_Material(){
         success: function(data){
             data = JSON.parse(data)
             if(data.status == 1){
-                var NewDownloadTag = '<a href="'+ download_url + '/' + data.File_Path +'" id="NewDownload_Tag" download></a>'
-                console.log(NewDownloadTag)
+                var NewDownloadTag = '<a href="'+ download_url + '/' + data.File_Type + '/' + data.File_Path +'" id="NewDownload_Tag" download></a>'
                 $('body').append(NewDownloadTag)
-                $('#NewDownload_Tag').click()
-                $('#NewDownload_Tag').remove()
+                $('#NewDownload_Tag')[0].click()
+                $('#NewDownload_Tag')[0].remove()
             }else{
                 swal("Oops!", data.message, "error", {
                     button: "Oh, Okay.",

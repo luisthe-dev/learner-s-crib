@@ -20,6 +20,7 @@ if (isset($_POST['Download_Id'])) {
             $Return['status'] = 1;
             $Return['message'] = 'Download Link Generated Successfully';
             $Return['File_Path'] = $Material_Details['File_Path'];
+            $Return['File_Type'] = $Material_Details['File_Type'];
         }else{
             $Return['message'] = 'Server Error Try Again Later';
         }
