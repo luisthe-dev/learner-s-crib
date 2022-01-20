@@ -2,11 +2,11 @@ var Materials_Main = null;
 var myLocation = null;
 var PassedData = null;
 
-var main_url = 'http://localhost/learnerscrib/Resource/php';
-// var main_url = 'https://platiniumxpwallet.com/learnerscrib';
+// var main_url = 'http://localhost/learnerscrib/Resource/php';
+var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
-var download_url = 'http://localhost/learnerscrib/Resource';
-// var download_url = 'https://platiniumxpwallet.com';
+// var download_url = 'http://localhost/learnerscrib/Resource';
+var download_url = 'https://platiniumxpwallet.com';
 
 var myLocation = location.href.split('/')
 myLocation = myLocation[myLocation.length - 1]
