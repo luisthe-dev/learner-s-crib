@@ -50,6 +50,7 @@ if (mysqli_num_rows($Found_Materials) > 0) {
     $Side_Materials = array();
     while ($Materials = mysqli_fetch_array($Found_Materials)) {
         $Material = array();
+        $Material['SN'] = $Materials['Id'];
         $Material['File_Name'] = $Materials['File_Name'];
         $Material['File_Path'] = $Materials['File_Path'];
         $Material['File_Description'] = $Materials['File_Description'];

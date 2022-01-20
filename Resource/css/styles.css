@@ -168,6 +168,7 @@ main#split_screen .main_left .main_list .main_list_preferences .main_list_prefer
 main#split_screen .main_left .main_list .main_list_files {
     margin: 20px auto;
     width: 95%;
+    cursor: pointer;
 }
 
 main#split_screen .main_left .main_list .main_list_files .main_list_file_container {
@@ -326,6 +327,7 @@ main#split_screen .main_right .main_right_top_results .main_right_top_result {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 
 main#split_screen .main_right .main_right_top_results .main_right_top_result .main_right_top_result_left {

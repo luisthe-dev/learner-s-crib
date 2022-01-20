@@ -8,6 +8,14 @@ var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 var myLocation = location.href.split('/')
 myLocation = myLocation[myLocation.length - 1]
 
+
+function file_link(Passed_Id){
+
+    alert(Passed_Id);
+    return false;
+
+}
+
 if (myLocation == '' || myLocation == 'index') {
     myLocation = 'index'
 } else {
@@ -25,12 +33,18 @@ $('document').ready(function () {
     }
 
     if (myLocation == 'upload') {
-        if (localStorage.resource_centre_user_logged_in != '' || localStorage.resource_centre_user_logged_in != ' ' || localStorage.resource_centre_user_logged_in != null) {
+        if (localStorage.resource_centre_user_logged_in != 'true' ) {
             swal("Oops!", "You Need To Be Logged In To Submit A Material", "error", {
                 button: "Oh, Okay."
             }).then(function () {
                 location.assign("./login")
             });
+        }
+    }
+
+    if(myLocation == 'file'){
+        if (localStorage.resource_centre_current_file != '' || localStorage.resource_centre_current_file != ' ' || localStorage.resource_centre_current_file != null) {
+                location.assign("./")
         }
     }
 
@@ -271,6 +285,8 @@ $('document').ready(function () {
     }else if(myLocation == 'search'){
         Materials_Url = main_url + '/get_searched_materials';
         PassedData = {Search_Item : localStorage.resource_centre_search_item};
+    }else{
+        Materials_Url = main_url + '/get_all_materials';
     }
 
     $.ajax({
@@ -292,7 +308,7 @@ $('document').ready(function () {
                 for (var material_count = 0; material_count < Materials_Main.length; material_count++) {
                     var main_data = Materials_Main[material_count];
                     var AddMaterial =
-                        '<a href="#">' +
+                        '<a onclick="file_link(' + main_data.SN + ')">' +
                         '<div class="main_list_file">' +
                         '<div class="main_list_file_left">' +
                         '<img src="./img_placeholder/' + main_data.File_Type + '.png" alt="Material Title (pdf file)">' +
@@ -321,7 +337,7 @@ $('document').ready(function () {
                 for (var material_count_top_views = 0; material_count_top_views < Materials_Side.length; material_count_top_views++) {
                     var main_data = Materials_Side[material_count_top_views];
                     var AddMaterial =
-                        '<a href="#">' +
+                        '<a onclick="file_link(' + main_data.SN + ')">' +
                         '<div class="main_right_top_result">' +
                         '<div class="main_right_top_result_left">' +
                         '<img src="./img_placeholder/' + main_data.File_Type + '.png">' +
