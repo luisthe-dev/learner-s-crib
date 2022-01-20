@@ -5,8 +5,8 @@ var PassedData = null;
 // var main_url = 'http://localhost/learnerscrib/Resource/php';
 var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
-// var download_url = 'http://localhost/learnerscrib/Resource';
-var download_url = 'https://platiniumxpwallet.com';
+// var download_url = 'http://localhost/learnerscrib/Resource/materials';
+var download_url = 'https://platiniumxpwallet.com/materials';
 
 var myLocation = location.href.split('/')
 myLocation = myLocation[myLocation.length - 1]
@@ -25,15 +25,34 @@ function Download_Material(){
 
     var Download_Id = localStorage.resource_centre_current_file;
     $.ajax({
-        url: main_url + 'update_download_count',
+        url: main_url + '/update_download_count',
         data: {Download_Id},
         method: 'POST',
         success: function(data){
             data = JSON.parse(data)
-            var NewDownloadTag = '<a href="'+ download_url + '/' + data.File_Path +'" id="NewDownload_Tag"></a>'
-            $('body').append(NewDownloadTag)
-            $('#NewDownload_Tag').click()
-            $('#NewDownload_Tag').remove()
+            if(data.status == 1){
+                var NewDownloadTag = '<a href="'+ download_url + '/' + data.File_Path +'" id="NewDownload_Tag" download></a>'
+                console.log(NewDownloadTag)
+                $('body').append(NewDownloadTag)
+                $('#NewDownload_Tag').click()
+                $('#NewDownload_Tag').remove()
+            }else{
+                swal("Oops!", data.message, "error", {
+                    button: "Oh, Okay.",
+                });
+            }
+        },
+        error: function(data){
+            console.log(data)
+            swal("Oops!", 'Error Connecting To Server', "error", {
+                button: "Oh, Okay.",
+            });
+        },
+        fail: function(data){
+            console.log(data)
+            swal("Oops!", 'Error Connecting To Server', "error", {
+                button: "Oh, Okay.",
+            });
         }
     })
 
