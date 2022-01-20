@@ -2,3 +2,4 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^(.*)$ http://newdomain.example/ [R=301]
