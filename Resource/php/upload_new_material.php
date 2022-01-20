@@ -42,6 +42,10 @@ if (isset($_POST['Material_Name']) && $Set == 1) {
 
         $Material_Path_New_Full = $Material_Path_Name . '.' . $Material_Path_Extension;
 
+        if(!file_exists('../materials')){
+            mkdir('../materials');
+        }
+
         if (!file_exists('../materials/' . $Material_Path_Extension)) {
             mkdir('../materials/' . $Material_Path_Extension);
         }

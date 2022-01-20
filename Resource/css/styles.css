@@ -253,6 +253,89 @@ main#split_screen .main_left .main_list .main_list_files .main_list_file_contain
     color: #D4AF37;
 }
 
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single{
+    margin: 20px auto;
+    border: 2px solid #b22222;
+    background: #ffffff;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .main_file_main_top_info{
+    display: flex;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single img {
+    display: block;
+    width: 190px;
+    margin: 16px 5px;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single label {
+    display: block;
+    font-weight: 800;
+    font-size: 16px;
+    width: 190px;
+    text-align: center;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single h3 {
+    display: block;
+    font-weight: 800;
+    font-size: 32px;
+    padding-left: 40px;
+    margin: 20px auto;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single h6 {
+    display: block;
+    font-weight: 600;
+    font-size: 24px;
+    padding-left: 40px;
+    margin: 5px auto;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single h7 {
+    display: block;
+    font-weight: 400;
+    font-size: 18px;
+    padding-left: 30px;
+    margin: 5px auto;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single p {
+    display: block;
+    font-weight: 200;
+    font-size: 18px;
+    padding-left: 30px;
+    margin: 5px 0;
+    text-align: justify;
+    width: 90%;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .stars {
+    display: block;
+    font-weight: 200;
+    font-size: 18px;
+    padding-left: 30px;
+    margin: 5px auto;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .buttons{
+    padding-left: 10px;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .buttons button {
+    display: inline;
+    margin-left: 4px;
+    width: 140px;
+}
+
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container i,
+main#split_screen .main_left .main_list .main_list_files .main_list_file_container svg {
+    color: #D4AF37;
+}
+
 main#split_screen .main_left .main_list .main_list_files button {
     width: 30%;
     padding: 12px;
@@ -639,6 +722,40 @@ main#split_screen .main_left .upload_new_material form button[type="submit"]:hov
 
     main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_list_file .main_list_file_right {
         display: none;
+    }
+
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .main_file_main_top_info{
+        display: block;
+    }
+
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single h3 {
+        font-size: 32px;
+        padding-left: 10px;
+    }
+    
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single h6 {
+        font-size: 24px;
+        padding-left: 10px;
+    }
+    
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single h7 {
+        font-size: 18px;
+        padding-left: 10px;
+    }
+    
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single p {
+        font-size: 18px;
+        padding-left: 10px;
+        width: 90%;
+    }
+    
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .stars {
+        font-size: 18px;
+        padding-left: 10px;
+    }
+    
+    main#split_screen .main_left .main_list .main_list_files .main_list_file_container .main_file_single .buttons{
+        padding-left: 2px;
     }
 
     main#account_forms {

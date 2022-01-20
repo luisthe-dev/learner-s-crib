@@ -2,8 +2,11 @@ var Materials_Main = null;
 var myLocation = null;
 var PassedData = null;
 
-// var main_url = 'http://localhost/learnerscrib/Resource/php';
-var main_url = 'https://platiniumxpwallet.com/learnerscrib';
+var main_url = 'http://localhost/learnerscrib/Resource/php';
+// var main_url = 'https://platiniumxpwallet.com/learnerscrib';
+
+var download_url = 'http://localhost/learnerscrib/Resource';
+// var download_url = 'https://platiniumxpwallet.com';
 
 var myLocation = location.href.split('/')
 myLocation = myLocation[myLocation.length - 1]
@@ -11,8 +14,28 @@ myLocation = myLocation[myLocation.length - 1]
 
 function file_link(Passed_Id){
 
-    alert(Passed_Id);
-    return false;
+    localStorage.setItem('resource_centre_current_file', Passed_Id)
+    location.assign('./file')
+
+    return false
+
+}
+
+function Download_Material(){
+
+    var Download_Id = localStorage.resource_centre_current_file;
+    $.ajax({
+        url: main_url + 'update_download_count',
+        data: {Download_Id},
+        method: 'POST',
+        success: function(data){
+            data = JSON.parse(data)
+            var NewDownloadTag = '<a href="'+ download_url + '/' + data.File_Path +'" id="NewDownload_Tag"></a>'
+            $('body').append(NewDownloadTag)
+            $('#NewDownload_Tag').click()
+            $('#NewDownload_Tag').remove()
+        }
+    })
 
 }
 
@@ -43,8 +66,8 @@ $('document').ready(function () {
     }
 
     if(myLocation == 'file'){
-        if (localStorage.resource_centre_current_file != '' || localStorage.resource_centre_current_file != ' ' || localStorage.resource_centre_current_file != null) {
-                location.assign("./")
+        if (localStorage.resource_centre_current_file == '' || localStorage.resource_centre_current_file == ' ' || localStorage.resource_centre_current_file == null) {
+            location.assign("./")
         }
     }
 
@@ -285,6 +308,9 @@ $('document').ready(function () {
     }else if(myLocation == 'search'){
         Materials_Url = main_url + '/get_searched_materials';
         PassedData = {Search_Item : localStorage.resource_centre_search_item};
+    }else if(myLocation == 'file'){
+        Materials_Url = main_url + '/get_current_file';
+        PassedData = {Current_File : localStorage.resource_centre_current_file};
     }else{
         Materials_Url = main_url + '/get_all_materials';
     }
@@ -304,32 +330,46 @@ $('document').ready(function () {
                 // Materials.sort((a, b) => (a.File_Name < b.File_Name ? 1 : -1))
 
                 //For Main Page
-                Materials_Main.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
-                for (var material_count = 0; material_count < Materials_Main.length; material_count++) {
-                    var main_data = Materials_Main[material_count];
-                    var AddMaterial =
-                        '<a onclick="file_link(' + main_data.SN + ')">' +
-                        '<div class="main_list_file">' +
-                        '<div class="main_list_file_left">' +
-                        '<img src="./img_placeholder/' + main_data.File_Type + '.png" alt="Material Title (pdf file)">' +
-                        '<label> ' + main_data.File_Type.toUpperCase() + ' File </label>' +
-                        '</div>' +
-                        '<div class="main_list_file_center">' +
-                        '<h3> ' + main_data.File_Name + ' </h3>' +
-                        '<h6> ' + main_data.File_Description.substring(0, 90) + '... </h6>' +
-                        '<p> Uploaded By <span> ' + main_data.User + ' </span> On <span> ' + main_data.When_Uploaded + ' </span> </p>' +
-                        '</div>' +
-                        '<div class="main_list_file_right">' +
-                        '<label>' + parseInt(main_data.Download_Count).toLocaleString() + ' Downloads </label>' +
-                        '<i class="fas fa-star"></i>' +
-                        '<i class="fas fa-star"></i>' +
-                        '<i class="fas fa-star"></i>' +
-                        '<i class="far fa-star"></i>' +
-                        '<i class="far fa-star"></i>' +
-                        '</div>' +
-                        '</div>' +
-                        '</a>';
-                    $('#main_list_file_container').append(AddMaterial);
+                if(myLocation == 'file'){
+                    
+                    $('#material_image').attr('attr', Materials_Main[0].File_Type + '.png')
+                    $('#material_type').html(Materials_Main[0].File_Type.toUpperCase() + ' File')
+                    $('#material_name').html(Materials_Main[0].File_Name)
+                    $('#course_title').html(Materials_Main[0].Course_Title)
+                    $('#course_code').html(Materials_Main[0].Course_Code)
+                    $('#material_description').html(Materials_Main[0].File_Description)
+                    $('#download_material').attr('onclick', 'Download_Material()')
+
+                }else{
+                    
+                    Materials_Main.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
+                    for (var material_count = 0; material_count < Materials_Main.length; material_count++) {
+                        var main_data = Materials_Main[material_count];
+                        var AddMaterial =
+                            '<a onclick="file_link(' + main_data.SN + ')">' +
+                            '<div class="main_list_file">' +
+                            '<div class="main_list_file_left">' +
+                            '<img src="./img_placeholder/' + main_data.File_Type + '.png" alt="Material Title (pdf file)">' +
+                            '<label> ' + main_data.File_Type.toUpperCase() + ' File </label>' +
+                            '</div>' +
+                            '<div class="main_list_file_center">' +
+                            '<h3> ' + main_data.File_Name + ' </h3>' +
+                            '<h6> ' + main_data.File_Description.substring(0, 90) + '... </h6>' +
+                            '<p> Uploaded By <span> ' + main_data.User + ' </span> On <span> ' + main_data.When_Uploaded + ' </span> </p>' +
+                            '</div>' +
+                            '<div class="main_list_file_right">' +
+                            '<label>' + parseInt(main_data.Download_Count).toLocaleString() + ' Downloads </label>' +
+                            '<i class="fas fa-star"></i>' +
+                            '<i class="fas fa-star"></i>' +
+                            '<i class="fas fa-star"></i>' +
+                            '<i class="far fa-star"></i>' +
+                            '<i class="far fa-star"></i>' +
+                            '</div>' +
+                            '</div>' +
+                            '</a>';
+                        $('#main_list_file_container').append(AddMaterial);
+                    }
+
                 }
 
                 //For Top Views
