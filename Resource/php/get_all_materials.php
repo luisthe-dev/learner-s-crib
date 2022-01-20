@@ -11,6 +11,7 @@ $Found_Materials = mysqli_query($LearnersCribResource, $Material_Query);
 
 if (mysqli_num_rows($Found_Materials) > 0) {
     $All_Materials = array();
+    $Side_Materials = array();
     while ($Materials = mysqli_fetch_array($Found_Materials)) {
         $Material = array();
         $Material['File_Name'] = $Materials['File_Name'];
@@ -28,10 +29,12 @@ if (mysqli_num_rows($Found_Materials) > 0) {
         $Material['User'] = mysqli_fetch_array(mysqli_query($LearnersCribResource, "SELECT * FROM users WHERE Id = $Needed_User"))['Username'];
         $Material['When_Uploaded'] = $Materials['When_Uploaded'];
         array_push($All_Materials, $Material);
+        array_push($Side_Materials, $Material);
     }
     $Return['status'] = 1;
     $Return['message'] = 'Materials Found';
-    $Return['data'] = $All_Materials;
+    $Return['Main'] = $All_Materials;
+    $Return['Side'] = $All_Materials;
 } else {
     $Return['message'] = 'No Uploaded Materials Found';
 }

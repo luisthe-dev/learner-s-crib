@@ -1,18 +1,48 @@
-Materials = null;
+var Materials_Main = null;
+var myLocation = null;
+var PassedData = null;
+
+var main_url = 'http://localhost/learnerscrib/Resource/php';
+// var main_url = 'https://platiniumxpwallet.com/learnerscrib';
+
+var myLocation = location.href.split('/')
+myLocation = myLocation[myLocation.length - 1]
+
+if (myLocation == '' || myLocation == 'index') {
+    myLocation = 'index'
+} else {
+    myLocation = myLocation.split('#')[0].split('?')[0].split('.html')[0]
+}
+
 $('document').ready(function () {
+
+    if (myLocation == 'search') {
+        if (localStorage.resource_centre_search_item != '' || localStorage.resource_centre_search_item != ' ' || localStorage.resource_centre_search_item != null) {
+            $('#search_item').val(localStorage.resource_centre_search_item)
+        } else {
+            location.assign('./')
+        }
+    }
+
+    if (myLocation == 'upload') {
+        if (localStorage.resource_centre_user_logged_in != '' || localStorage.resource_centre_user_logged_in != ' ' || localStorage.resource_centre_user_logged_in != null) {
+            swal("Oops!", "You Need To Be Logged In To Submit A Material", "error", {
+                button: "Oh, Okay."
+            }).then(function () {
+                location.assign("./login")
+            });
+        }
+    }
 
     if (localStorage.resource_centre_user_logged_in) {
         $('#submit_class_material').attr('onclick', "location.assign('./upload')");
         $('#account_management').attr('onclick', "location.assign('./logout')");
         $('#account_management').text('Sign Out');
     } else {
-        $('#submit_class_material').attr('onclick', 'swal("Oops!", data.message, "error", {button: "Oh, Okay.",});location.assign("./upload")"');
+        $('#submit_class_material').attr('onclick', 'swal("Oops!", "You Need To Be Logged In To Submit A Material", "error", {button: "Oh, Okay."}).then(function(){location.assign("./login");});');
         $('#account_management').attr('onclick', "location.assign('./login')");
         $('#account_management').text('Sign In or Sign Up');
     }
-
-    // var main_url = 'http://localhost/learnerscrib/Resource/php';
-    var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
     $('#select_a_file').on('click', function () {
         $('#Material_File').click();
@@ -22,22 +52,22 @@ $('document').ready(function () {
         var sort_by = $('#sort_results_by').val()
 
         if (sort_by == 'Name') {
-            Materials.sort((a, b) => (a.File_Name < b.File_Name ? 1 : -1))
+            Materials_Main.sort((a, b) => (a.File_Name < b.File_Name ? 1 : -1))
         }
         if (sort_by == 'Type') {
-            Materials.sort((a, b) => (a.File_Type < b.File_Type ? 1 : -1))
+            Materials_Main.sort((a, b) => (a.File_Type < b.File_Type ? 1 : -1))
         }
         if (sort_by == 'Downloads') {
-            Materials.sort((a, b) => (a.Download_Count < b.Download_Count ? 1 : -1))
+            Materials_Main.sort((a, b) => (a.Download_Count < b.Download_Count ? 1 : -1))
         }
         if (sort_by == 'Views') {
-            Materials.sort((a, b) => (a.View_Count < b.View_Count ? 1 : -1))
+            Materials_Main.sort((a, b) => (a.View_Count < b.View_Count ? 1 : -1))
         }
 
         $('#main_list_file_container').html('');
 
-        for (var material_count = 0; material_count < Materials.length; material_count++) {
-            var main_data = Materials[material_count];
+        for (var material_count = 0; material_count < Materials_Main.length; material_count++) {
+            var main_data = Materials_Main[material_count];
             var AddMaterial =
                 '<a href="#">' +
                 '<div class="main_list_file">' +
@@ -229,21 +259,38 @@ $('document').ready(function () {
 
     })
 
+    $('#Search_Form').on('submit', function () {
+        var Search_Item = $('#search_item').val()
+        localStorage.setItem('resource_centre_search_item', Search_Item)
+        location.assign('./search')
+        return false
+    })
+
+    if(myLocation == 'index'){
+        Materials_Url = main_url + '/get_all_materials';
+    }else if(myLocation == 'search'){
+        Materials_Url = main_url + '/get_searched_materials';
+        PassedData = {Search_Item : localStorage.resource_centre_search_item};
+    }
+
     $.ajax({
-        url: main_url + '/get_all_materials',
+        url: Materials_Url,
+        data: PassedData,
+        method: 'POST',
         success: function (data) {
             data = JSON.parse(data)
             if (data.status == 1) {
-                Materials = data.data;
+                Materials_Main = data.Main;
+                Materials_Side = data.Side;
                 //Ascending
                 // Materials.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
                 //Descending
                 // Materials.sort((a, b) => (a.File_Name < b.File_Name ? 1 : -1))
 
                 //For Main Page
-                Materials.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
-                for (var material_count = 0; material_count < Materials.length; material_count++) {
-                    var main_data = Materials[material_count];
+                Materials_Main.sort((a, b) => (a.File_Name > b.File_Name ? 1 : -1))
+                for (var material_count = 0; material_count < Materials_Main.length; material_count++) {
+                    var main_data = Materials_Main[material_count];
                     var AddMaterial =
                         '<a href="#">' +
                         '<div class="main_list_file">' +
@@ -270,9 +317,9 @@ $('document').ready(function () {
                 }
 
                 //For Top Views
-                Materials.sort((a, b) => (a.View_Count < b.View_Count ? 1 : -1))
-                for (var material_count_top_views = 0; material_count_top_views < Materials.length; material_count_top_views++) {
-                    var main_data = Materials[material_count_top_views];
+                Materials_Side.sort((a, b) => (a.View_Count < b.View_Count ? 1 : -1))
+                for (var material_count_top_views = 0; material_count_top_views < Materials_Side.length; material_count_top_views++) {
+                    var main_data = Materials_Side[material_count_top_views];
                     var AddMaterial =
                         '<a href="#">' +
                         '<div class="main_right_top_result">' +
@@ -291,9 +338,9 @@ $('document').ready(function () {
                 }
 
                 //For Top Downloads
-                Materials.sort((a, b) => (a.Download_Count < b.Download_Count ? 1 : -1))
-                for (var material_count_top_downloads = 0; material_count_top_downloads < Materials.length; material_count_top_downloads++) {
-                    var main_data = Materials[material_count_top_downloads];
+                Materials_Side.sort((a, b) => (a.Download_Count < b.Download_Count ? 1 : -1))
+                for (var material_count_top_downloads = 0; material_count_top_downloads < Materials_Side.length; material_count_top_downloads++) {
+                    var main_data = Materials_Side[material_count_top_downloads];
                     var AddMaterial =
                         '<a href="#">' +
                         '<div class="main_right_top_result">' +
@@ -311,7 +358,7 @@ $('document').ready(function () {
                     $('#main_right_top_results_container_downloads').append(AddMaterial);
                 }
 
-                if (Materials.length < 13) {
+                if (Materials_Main.length < 13) {
                     $('#load_more_button').remove()
                 }
             } else {
@@ -342,46 +389,54 @@ $('document').ready(function () {
         Material_Form_Data.append('Material_Description', $('#Material_Description').val());
         Material_Form_Data.append('Course_Level', $('#Course_Level').val());
 
-        $.ajax({
-            url: main_url + '/upload_new_material',
-            data: Material_Form_Data,
-            method: 'POST',
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                console.log(data)
-                data = JSON.parse(data)
-                if (data.status == 1) {
-                    swal("Good News!", data.message, "success", {
-                        button: "Thank You!",
-                    }).then(function () {
-                        location.assign('./');
+        if (localStorage.resource_centre_user_logged_in) {
+            $.ajax({
+                url: main_url + '/upload_new_material',
+                data: Material_Form_Data,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log(data)
+                    data = JSON.parse(data)
+                    if (data.status == 1) {
+                        swal("Good News!", data.message, "success", {
+                            button: "Thank You!",
+                        }).then(function () {
+                            location.assign('./');
+                        });
+                    } else {
+                        swal("Oops!", data.message, "error", {
+                            button: "Oh, Okay.",
+                        });
+                        $('#material_form button[type="submit"]').html('Try Again!');
+                        $('#material_form button[type="submit"]').removeAttr('disabled')
+                    }
+                },
+                error: function (data) {
+                    console.log(data)
+                    swal("Oops!", 'Error Connecting To Server', "error", {
+                        button: "Oh, Okay.",
                     });
-                } else {
-                    swal("Oops!", data.message, "error", {
+                    $('#material_form button[type="submit"]').html('Try Again!');
+                    $('#material_form button[type="submit"]').removeAttr('disabled')
+                },
+                fail: function (data) {
+                    console.log(data)
+                    swal("Oops!", 'Error Connecting To Server', "error", {
                         button: "Oh, Okay.",
                     });
                     $('#material_form button[type="submit"]').html('Try Again!');
                     $('#material_form button[type="submit"]').removeAttr('disabled')
                 }
-            },
-            error: function (data) {
-                console.log(data)
-                swal("Oops!", 'Error Connecting To Server', "error", {
-                    button: "Oh, Okay.",
-                });
-                $('#material_form button[type="submit"]').html('Try Again!');
-                $('#material_form button[type="submit"]').removeAttr('disabled')
-            },
-            fail: function (data) {
-                console.log(data)
-                swal("Oops!", 'Error Connecting To Server', "error", {
-                    button: "Oh, Okay.",
-                });
-                $('#material_form button[type="submit"]').html('Try Again!');
-                $('#material_form button[type="submit"]').removeAttr('disabled')
-            }
-        })
+            })
+        } else {
+            swal("Oops!", "You Need To Be Logged In To Submit A Material", "error", {
+                button: "Oh, Okay."
+            }).then(function () {
+                location.assign("./login");
+            });
+        }
 
         return false;
 
