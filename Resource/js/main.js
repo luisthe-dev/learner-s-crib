@@ -2,6 +2,8 @@ var Materials_Main = null;
 var myLocation = null;
 var PassedData = null;
 
+location.assign('https://learnerscrib.platiniumxpwallet.com/')
+
 // var main_url = 'http://localhost/learnerscrib/Resource/php';
 var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
