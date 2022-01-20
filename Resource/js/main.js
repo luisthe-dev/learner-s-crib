@@ -2,8 +2,8 @@ var Materials_Main = null;
 var myLocation = null;
 var PassedData = null;
 
-var main_url = 'http://localhost/learnerscrib/Resource/php';
-// var main_url = 'https://platiniumxpwallet.com/learnerscrib';
+// var main_url = 'http://localhost/learnerscrib/Resource/php';
+var main_url = 'https://platiniumxpwallet.com/learnerscrib';
 
 var myLocation = location.href.split('/')
 myLocation = myLocation[myLocation.length - 1]
